@@ -1,3 +1,4 @@
-from Projeto.Lancamento import lancamento
+import MapeamentoDaOrbita
 
-lancamento()
+# NomeDoArquivo.nomeDaFuncao()
+MapeamentoDaOrbita.mapeamentoDaOrbita()
