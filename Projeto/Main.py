@@ -36,7 +36,6 @@ def main():
             print("\n>> Iniciando Descrição da Solução Proposta...")
             time.sleep(1)
             print("\n>> DESCRIÇÃO: Sistema de monitoramento e gestão de tráfego orbital da Flyspace...")
-            # Aqui você pode adicionar um print maior com a sua documentação se quiser.
 
         elif opcao == '2':
             print("\n>> Iniciando Módulo de Lançamento...")
