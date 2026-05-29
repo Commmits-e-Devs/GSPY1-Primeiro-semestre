@@ -14,7 +14,7 @@ import TrocarOrbita
 def exibir_menu():
     """Função responsável por desenhar a interface do menu no terminal."""
     print("\n" + "=" * 55)
-    print(" 🛰️  SISTEMA DE GERENCIAMENTO AEROESPACIAL (GSPY1)  🛰️ ")
+    print(" 🛰️  SISTEMA DE GERENCIAMENTO AEROESPACIAL (GS - 1ESPY)  🛰️ ")
     print("=" * 55)
     print("  [ 1 ] - Mapeamento das Órbitas (Relatório TLE)")
     print("  [ 2 ] - Simular Lançamento de Satélite")
