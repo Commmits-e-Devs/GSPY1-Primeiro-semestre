@@ -1,70 +1,3 @@
-# import time
-# import random
-#
-# DISTANCIA_CRITICA_KM = 15.0
-#
-# # 3 satélites monitorados
-# satelites = [
-#     {"id": "SAT-1", "altitude_nominal": 600},
-#     {"id": "SAT-2", "altitude_nominal": 610},
-#     {"id": "SAT-3", "altitude_nominal": 620},
-# ]
-#
-#
-# def consultar_api_risco(altitude_nominal):
-#     # Simulação de retorno de API com valores aleatórios (70% de chance de gerar ameaça)
-#     if random.randint(1, 10) <= 7:
-#         return {
-#             "ameaca": f"DEBRIS-{random.randint(100, 999)}",
-#             "distancia_km": round(random.uniform(2.0, 50.0), 1),  # Distância entre 2.0 e 50.0 km
-#             "altitude_ameaca": altitude_nominal + random.randint(-5, 5),
-#             "tempo_espera_seg": random.randint(2, 5)  # Tempo de espera variável
-#         }
-#     return None
-#
-#
-# def painel_decisao(sat_id, risco):
-#     print("=" * 50)
-#     if not risco:
-#         print(f"🛰️ {sat_id} | 🟢 STATUS: SEGURO")
-#         print("➡️ AÇÃO: MANTENDO ÓRBITA (Sem troca)")
-#         return False
-#
-#     dist = risco['distancia_km']
-#     print(f"🛰️ {sat_id} | ⚠️ AMEAÇA: {risco['ameaca']} a {dist} km")
-#
-#     if dist <= DISTANCIA_CRITICA_KM:
-#         print("🔴 STATUS: PERIGO (Distância crítica violada)")
-#         print("⬆️ AÇÃO: MANOBRA EXECUTADA (Troca de órbita)")
-#         return True
-#     else:
-#         print("🟡 STATUS: ATENÇÃO (Fora da zona crítica)")
-#         print("➡️ AÇÃO: MANTENDO ÓRBITA (Sem troca)")
-#         return False
-#
-#
-# def executar_evasao(sat_id, altitude_atual, tempo_espera):
-#     altitude_segura = altitude_atual + random.randint(30, 60)  # Afastamento também dinâmico
-#     print(f"   [COMANDO] Elevando {sat_id} para {altitude_segura} km...")
-#     time.sleep(1)
-#
-#     print(f"   [ESPERA] Risco passando. Aguardando {tempo_espera} segundos...")
-#     time.sleep(tempo_espera)
-#
-#     print(f"   [COMANDO] Retornando {sat_id} para órbita original ({altitude_atual} km)...")
-#     time.sleep(1)
-#     print("   [SUCESSO] Órbita restaurada.")
-#
-#
-# def sistema_antidebris(lista_satelites):
-#     for sat in lista_satelites:
-#         risco = consultar_api_risco(sat["altitude_nominal"])
-#         manobrar = painel_decisao(sat["id"], risco)
-#
-#         if manobrar:
-#             executar_evasao(sat["id"], sat["altitude_nominal"], risco["tempo_espera_seg"])
-# """Código abaixo possui algumas mudanças, analisem e me falem"""
-
 import random
 import time
 import math
@@ -264,10 +197,10 @@ def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original,
 def executar_monitoramento_satelite(satelite_atual):
     """Monitora um satélite e executa ações de colisão se necessário"""
     
-    print("\n" + "=" * 70)
-    print(f"MONITORAMENTO: {satelite_atual['identificador']}")
-    print(f"Órbita atual: {satelite_atual['altitude_atual']} km")
-    print("=" * 70)
+    print("\n" + "=" * 60)
+    print(f"\t\tMONITORAMENTO: {satelite_atual['identificador']}")
+    print(f"\t\tÓrbita atual: {satelite_atual['altitude_atual']} km")
+    print("=" * 60)
     print()
     time.sleep(1.0)
 
@@ -303,24 +236,24 @@ def executar_monitoramento_satelite(satelite_atual):
         print("SEGURO: Nenhuma detecção no radar\n")
         time.sleep(1.0)
 
-    print("-" * 70)
+    print("-" * 60)
     time.sleep(0.5)
 
 
 def executar_sistema_geral_anticolisao(lista_de_satelites):
     """Executa varredura geral de todos os satélites"""
     
-    print("\n" + "=" * 70)
-    print("SISTEMA DE GERENCIAMENTO DE TRÁFEGO ESPACIAL")
-    print("=" * 70)
+    print("\n" + "=" * 60)
+    print("\tSISTEMA DE GERENCIAMENTO DE TRÁFEGO ESPACIAL")
+    print("=" * 60)
     time.sleep(1.5)
 
     for satelite in lista_de_satelites:
         executar_monitoramento_satelite(satelite)
 
-    print("\n" + "=" * 70)
-    print("VARREDURA DE FROTA CONCLUÍDA")
-    print("=" * 70 + "\n")
+    print("\n" + "=" * 60)
+    print("\t\tVARREDURA DE FROTA CONCLUÍDA")
+    print("=" * 60 + "\n")
 
 
 if __name__ == "__main__":
