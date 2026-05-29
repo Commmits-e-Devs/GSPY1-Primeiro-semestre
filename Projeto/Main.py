@@ -14,7 +14,7 @@ import TrocarOrbita
 def exibir_menu():
     """Função responsável por desenhar a interface do menu no terminal."""
     print("\n" + "=" * 55)
-    print(" 🛰️  SISTEMA DE GERENCIAMENTO AEROESPACIAL (GS - 1ESPY)  🛰️ ")
+    print("SISTEMA DE GERENCIAMENTO AEROESPACIAL (GS - 1ESPY)")
     print("=" * 55)
     print("  [ 1 ] - Mapeamento das Órbitas (Relatório TLE)")
     print("  [ 2 ] - Simular Lançamento de Satélite")
@@ -58,7 +58,7 @@ def main():
 
         else:
             # Caso o usuário digite "A", "5", "teste", etc.
-            print("\n❌ ERRO: Entrada inválida! Por favor, digite apenas números entre 0 e 3.")
+            print("\nERRO: Entrada inválida! Por favor, digite apenas números entre 0 e 3.")
             time.sleep(1.5)
 
 

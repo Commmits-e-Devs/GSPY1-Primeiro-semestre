@@ -21,7 +21,7 @@ def lancamento():
 
     def gerar_lixo_espacial(espaco, quantidade):# podendo ser tanto lixo quanto outros satelites
         """Espalha objetos aleatórios pela matriz."""
-        print(f"\n--- Existem {quantidade} satelites/obejetos pelas órbitas de lançamento ---")
+        print(f"\n--- Existem {quantidade} satélites/objetos pelas órbitas de lançamento ---")
         sucessos = 0
         tentativas = 0
         limite_tentativas = quantidade * 10
@@ -39,7 +39,7 @@ def lancamento():
 
             tentativas += 1
 
-        print(f"Analizado, {sucessos} satelites/obejetos na orbita.\n")
+        print(f"Analisando, {sucessos} satélites/objetos na órbita.\n")
 
 
     def lancar_satelite(espaco, nome, altitude, angulo):
@@ -53,10 +53,10 @@ def lancamento():
 
         if livre:
             espaco[altitude][angulo] = 1
-            print(f"✅ SUCESSO: Satélite '{nome}' posicionado na altitude {altitude}, ângulo {angulo}°.")
+            print(f"SUCESSO: Satélite '{nome}' posicionado na altitude {altitude}, ângulo {angulo}°.")
             print(f"Nem um outro satelite na zona de perigo")
         else:
-            print(f"❌ ALERTA DE COLISÃO! Lançamento do '{nome}' abortado.")
+            print(f"ALERTA DE COLISÃO! Lançamento do '{nome}' abortado.")
             print(f"   Motivo: Objeto detectado na zona de segurança (ângulo {angulo_conflito}°).")
             print(f"'{nome}' iria bater com outro Satélite.")
 
