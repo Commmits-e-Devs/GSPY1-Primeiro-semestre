@@ -255,6 +255,3 @@ def executar_sistema_geral_anticolisao(lista_de_satelites):
     print("\t\tVARREDURA DE FROTA CONCLUÍDA")
     print("=" * 60 + "\n")
 
-
-if __name__ == "__main__":
-    executar_sistema_geral_anticolisao(lista_de_satelites_proprios)
