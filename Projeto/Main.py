@@ -1,6 +1,6 @@
 import time
 
-#importando os arquivos do prototipo
+#importando os arquivos de todos os prototipo
 import MapeamentoDaOrbita
 import Lancamento
 import TrocarOrbita
@@ -28,9 +28,14 @@ def main():
         opcao = input("Escolha uma opção válida (0 a 6): ").strip()
 
         if opcao == '1':
-            print("\n>> Iniciando Descrição da Solução Proposta...")
-            time.sleep(1)
-            print("\n>> ADICIONAR DESCRICAO AINDA !!!!")
+            print("\n" + "=" * 65)
+            print("A Flyspace é uma startup de Space Tech focada na gestão autônoma")
+            print("do tráfego orbital. Nosso sistema processa dados TLE em tempo real,")
+            print("lança satélites com segurança, previne colisões espaciais através")
+            print("de manobras de desvio, mitiga, lixo espacial com desorbitagem")
+            print("e protege frotas contra radiação.")
+            print("=" * 65 + "\n")
+            time.sleep(5)
 
         elif opcao == '2':
             print("\n>> Iniciando Módulo de Lançamento...")

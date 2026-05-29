@@ -106,5 +106,3 @@ def mapeamentoDaOrbita():
     if linhas_texto:
         resultados = processar_satelites(linhas_texto)
         exibir_relatorio(resultados)
-
-# Se quiser testar rodando este próprio arquivo diretamente, o bloco abaixo resolve:

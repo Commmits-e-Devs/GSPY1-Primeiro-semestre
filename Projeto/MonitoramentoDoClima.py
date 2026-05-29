@@ -29,24 +29,24 @@ def gerenciar_clima_espacial_frota(lista_de_satelites):
     time.sleep(1.0)
 
     nivel_radiacao_atual = obter_leitura_sensores_solares()
-    print(f"📡 TELEMETRIA SOLAR ATUAL: {nivel_radiacao_atual} MeV")
+    print(f"TELEMETRIA SOLAR ATUAL: {nivel_radiacao_atual} MeV")
 
     if nivel_radiacao_atual > LIMITE_RADIACAO_SEGURO_MEV:
-        print(f"🚨 ALERTA CRÍTICO: Tempestade solar detectada! Nível acima de {LIMITE_RADIACAO_SEGURO_MEV} MeV.")
+        print(f"ALERTA CRÍTICO: Tempestade solar detectada! Nível acima de {LIMITE_RADIACAO_SEGURO_MEV} MeV.")
         print("Iniciando protocolo automático de salvaguarda eletrônica...\n")
         time.sleep(1.5)
 
         for satelite in lista_de_satelites:
-            print(f"⚡ Modificando {satelite['identificador']}:")
+            print(f"Modificando {satelite['identificador']}:")
             print("  -> Desligando cargas úteis e instrumentos não essenciais...")
             time.sleep(0.5)
             satelite["status"] = "Safe Mode (Modo de Segurança)"
             print(f"  -> Status atualizado: {satelite['status']}\n")
             time.sleep(0.5)
 
-        print("🔒 Toda a frota Flyspace está protegida em Modo de Segurança.")
+        print("Toda a frota Flyspace está protegida em Modo de Segurança.")
     else:
-        print("✅ Clima espacial estável. Ventos solares dentro da normalidade.")
+        print("Clima espacial estável. Ventos solares dentro da normalidade.")
         print("Mantendo todos os satélites em regime de operação total.\n")
 
         for satelite in lista_de_satelites:
@@ -55,7 +55,3 @@ def gerenciar_clima_espacial_frota(lista_de_satelites):
     print("=" * 60)
     print("\t\tMONITORAMENTO DE CLIMA CONCLUÍDO")
     print("=" * 60 + "\n")
-
-# --- EXECUÇÃO DO PROTÓTIPO 4 ---
-# Para testar o acionamento do Safe Mode, você pode rodar a função em um loop curto
-# executar_clima = gerenciar_clima_espacial_frota(lista_de_satelites_proprios)
