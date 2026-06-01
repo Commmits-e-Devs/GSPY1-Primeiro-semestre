@@ -1,9 +1,6 @@
 import random
 import time
 
-# ============================================================================
-# DIRETRIZES DE SUSTENTABILIDADE (LIXO ESPACIAL)
-# ============================================================================
 LIMITE_MINIMO_COMBUSTIVEL_PORCENTO = 5.0
 LIMITE_ALTITUDE_LEO_KM = 2000.0
 
@@ -11,14 +8,11 @@ LIMITE_ALTITUDE_LEO_KM = 2000.0
 lista_de_satelites_proprios = [
     {"identificador": "FLY-SUSTAIN-1", "altitude_atual": 550, "combustivel": 65.0, "ciclo_vida": "Ativo"},
     {"identificador": "FLY-SUSTAIN-2", "altitude_atual": 720, "combustivel": 3.2, "ciclo_vida": "Ativo"},
-    # Crítico em LEO
     {"identificador": "FLY-SUSTAIN-3", "altitude_atual": 2200, "combustivel": 4.1, "ciclo_vida": "Ativo"},
-    # Crítico em MEO/GEO
 ]
 
 
 def avaliar_sustentabilidade_satelite(satelite):
-    """Analisa se o satélite precisa sofrer desorbitagem para não virar lixo espacial"""
     print(f"\nANÁLISE DE CICLO DE VIDA: {satelite['identificador']}")
     print(f"Altitude: {satelite['altitude_atual']} km | Combustível: {satelite['combustivel']}%")
     time.sleep(0.8)
@@ -28,7 +22,6 @@ def avaliar_sustentabilidade_satelite(satelite):
         print("Ativando Diretriz Flyspace de mitigação de detritos...")
         time.sleep(1.0)
 
-        # Tomada de decisão inteligente baseada na altitude
         if satelite["altitude_atual"] <= LIMITE_ALTITUDE_LEO_KM:
             satelite["ciclo_vida"] = "Desorbitado (Queima Atmosférica)"
             print("PROTOCOLO REENTRADA ATIVADO:")
@@ -49,7 +42,6 @@ def avaliar_sustentabilidade_satelite(satelite):
 
 
 def executar_auditoria_ambiental_espacial(lista_de_satelites):
-    """Inicia a varredura ambiental em toda a frota da startup"""
     print("\n" + "=" * 60)
     print("\tFLYSPACE - SISTEMA DE SUSTENTABILIDADE ORBITAL")
     print("=" * 60)

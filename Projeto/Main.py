@@ -35,7 +35,7 @@ def main():
             print("de manobras de desvio, mitiga, lixo espacial com desorbitagem")
             print("e protege frotas contra radiação.")
             print("=" * 65 + "\n")
-            time.sleep(5)
+            time.sleep(2.5)
 
         elif opcao == '2':
             print("\n>> Iniciando Módulo de Lançamento...")
@@ -63,7 +63,7 @@ def main():
             MapeamentoDaOrbita.mapeamentoDaOrbita()
 
         elif opcao == '0':
-            print("\n>> Encerrando o sistema da Flyspace. Até logo!\n")
+            print("\n>> Encerrando o sistema da FlySpace. Até logo!\n")
             break
 
         else:

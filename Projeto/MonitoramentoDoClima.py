@@ -1,9 +1,6 @@
 import random
 import time
 
-# ============================================================================
-# CONFIGURAÇÕES E CONSTANTES DO CLIMA ESPACIAL
-# ============================================================================
 LIMITE_RADIACAO_SEGURO_MEV = 85.0
 
 lista_de_satelites_proprios = [
@@ -14,15 +11,12 @@ lista_de_satelites_proprios = [
 
 
 def obter_leitura_sensores_solares():
-    """Simula a telemetria dos sensores de radiação espacial (em MeV)"""
-    # A maior parte do tempo o clima está bom (10 a 60 MeV), mas pode haver picos (até 120 MeV)
     if random.randint(1, 10) <= 3:
-        return round(random.uniform(86.0, 120.0), 2)  # Simula tempestade solar
+        return round(random.uniform(86.0, 120.0), 2)
     return round(random.uniform(15.0, 65.0), 2)
 
 
 def gerenciar_clima_espacial_frota(lista_de_satelites):
-    """Varre a frota aplicando o protocolo de proteção contra radiação"""
     print("\n" + "=" * 60)
     print("\tFLYSPACE - SISTEMA DE MONITORAMENTO DE CLIMA ESPACIAL")
     print("=" * 60)

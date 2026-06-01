@@ -2,11 +2,8 @@ import random
 import time
 import math
 
-# ============================================================================
-# CONSTANTES DE ÓRBITA (Física Real)
-# ============================================================================
 RAIO_TERRA_KM = 6371.0
-GM_TERRA = 398600.4418  # km³/s²
+GM_TERRA = 398600.4418
 DISTANCIA_LIMITE_SEGURANCA_KM = 15.0
 
 lista_de_satelites_proprios = [
@@ -15,37 +12,25 @@ lista_de_satelites_proprios = [
     {"identificador": "MEU-SAT-3", "altitude_atual": 620},
 ]
 
-# ============================================================================
-# FUNÇÕES DE CÁLCULO DE ÓRBITA
-# ============================================================================
-
 def calcular_velocidade_orbital(altitude_km):
-    """Calcula velocidade orbital: v = sqrt(GM / r)"""
     raio_orbital = RAIO_TERRA_KM + altitude_km
     velocidade = math.sqrt(GM_TERRA / raio_orbital)
     return round(velocidade, 3)
 
 
 def calcular_periodo_orbital(altitude_km):
-    """Calcula período orbital em minutos: T = 2*pi*sqrt(r³/GM)"""
     raio_orbital = RAIO_TERRA_KM + altitude_km
     periodo_segundos = 2 * math.pi * math.sqrt((raio_orbital ** 3) / GM_TERRA)
     return round(periodo_segundos / 60, 2)
 
 
 def calcular_delta_v(altitude_1, altitude_2):
-    """
-    Calcula a mudança de velocidade necessária (delta-v) para mudar de órbita.
-    Usa aproximação de manobra de Hohmann simplificada.
-    """
     v1 = calcular_velocidade_orbital(altitude_1)
     v2 = calcular_velocidade_orbital(altitude_2)
     delta_v = abs(v2 - v1)
     return round(delta_v, 3)
 
-
 def buscar_satelite_proximo():
-    """Simula detecção de satélite concorrente no radar"""
     if random.randint(1, 10) <= 7:
         return {
             "id_concorrente": f"SAT-CONCORRENTE-{random.randint(100, 999)}",
@@ -55,33 +40,20 @@ def buscar_satelite_proximo():
         }
     return None
 
-
 def validar_se_nova_altitude_esta_vazia(altitude_para_testar):
-    """Valida se a altitude está livre para manobra"""
     return random.randint(1, 100) <= 80
-
 
 def realizar_manobra_com_desvio_incrementado(
     id_satelite, altitude_original, tempo_espera, altitude_concorrente
 ):
-    """
-    Executa tentativas de desvio progressivas:
-    - Tenta +20km
-    - Se falhar, tenta +40km novamente
-    - Se falhar, tenta +60km novamente
-    - Se todas falharem, executa manobra de aceleração para órbita superior
-    """
-    
     velocidade_original = calcular_velocidade_orbital(altitude_original)
     periodo_original = calcular_periodo_orbital(altitude_original)
     
     print(f"\n--- ANÁLISE INICIAL DO SATÉLITE CONCORRENTE ---")
-    print(f"    Altitude: {altitude_concorrente} km")
-    print(f"    Velocidade: {calcular_velocidade_orbital(altitude_concorrente)} km/s")
+    print(f"Altitude: {altitude_concorrente} km")
+    print(f"Velocidade: {calcular_velocidade_orbital(altitude_concorrente)} km/s")
     print()
     time.sleep(1.0)
-
-    # Tentativas 1, 2 e 3 com incrementos de 20km
     incrementos = [20, 40, 60]
     
     for numero_tentativa, incremento in enumerate(incrementos, 1):
@@ -91,39 +63,38 @@ def realizar_manobra_com_desvio_incrementado(
         novo_periodo = calcular_periodo_orbital(nova_altitude)
 
         print(f"TENTATIVA {numero_tentativa}:")
-        print(f"  Altitude proposta: {altitude_original} + {incremento} = {nova_altitude} km")
-        print(f"  Velocidade nessa órbita: {nova_velocidade} km/s")
-        print(f"  Período orbital: {novo_periodo} min")
-        print(f"  Combustível necessário (delta-v): {delta_v} km/s")
-        print(f"  Verificando disponibilidade da órbita...", end=" ")
+        print(f"Altitude proposta: {altitude_original} + {incremento} = {nova_altitude} km")
+        print(f"Velocidade nessa órbita: {nova_velocidade} km/s")
+        print(f"Período orbital: {novo_periodo} min")
+        print(f"Combustível necessário (delta-v): {delta_v} km/s")
+        print(f"Verificando disponibilidade da órbita...", end=" ")
         time.sleep(1.0)
 
         if validar_se_nova_altitude_esta_vazia(nova_altitude):
             print("LIBERADA")
-            print(f"\n  SUCESSO: Órbita {nova_altitude} km está disponível!")
-            print(f"  Executando desvio para {id_satelite}...")
+            print(f"\nSUCESSO: Órbita {nova_altitude} km está disponível!")
+            print(f"Executando desvio para {id_satelite}...")
             time.sleep(1.0)
             
-            print(f"  Elevando de {altitude_original} para {nova_altitude} km...")
+            print(f"Elevando de {altitude_original} para {nova_altitude} km...")
             time.sleep(1.0)
             
-            print(f"  Aguardando tráfego do concorrente ({tempo_espera}s)...")
+            print(f"Aguardando tráfego do concorrente ({tempo_espera}s)...")
             time.sleep(tempo_espera)
             
-            print(f"  Retornando à órbita nominal de {altitude_original} km...")
+            print(f"Retornando à órbita nominal de {altitude_original} km...")
             time.sleep(1.0)
             
-            print(f"  {id_satelite} estabilizado na posição original.")
-            print(f"  Velocidade nominal: {velocidade_original} km/s")
-            print(f"  Período: {periodo_original} min\n")
+            print(f"{id_satelite} estabilizado na posição original.")
+            print(f"Velocidade nominal: {velocidade_original} km/s")
+            print(f"Período: {periodo_original} min\n")
             time.sleep(1.0)
             return True
         else:
             print("OCUPADA")
-            print(f"  Órbita {nova_altitude} km indisponível. Tentando próxima altitude...\n")
+            print(f"Órbita {nova_altitude} km indisponível. Tentando próxima altitude...\n")
             time.sleep(1.0)
 
-    # Se todas as 3 tentativas falharem, executa manobra de aceleração
     print("\n*** TODAS AS TENTATIVAS DE DESVIO SIMPLES FALHARAM ***")
     print("Executando manobra de aceleração para órbita superior...")
     print()
@@ -135,13 +106,6 @@ def realizar_manobra_com_desvio_incrementado(
 
 
 def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original, periodo_original):
-    """
-    Executa manobra de aceleração (Hohmann simplificada):
-    1. Aumenta velocidade tangencialmente
-    2. Sobe para órbita de transferência (70 km acima)
-    3. Circulariza a órbita nova
-    4. Retorna à órbita original
-    """
     
     altitude_transferencia = altitude_original + 70
     vel_transferencia = calcular_velocidade_orbital(altitude_transferencia)
@@ -154,48 +118,47 @@ def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original,
     time.sleep(0.5)
     
     print(f"FASE 1: ACELERAÇÃO TANGENCIAL")
-    print(f"  Altitude atual: {altitude_original} km")
-    print(f"  Velocidade atual: {vel_original} km/s")
-    print(f"  Acelerando satélite...")
+    print(f"Altitude atual: {altitude_original} km")
+    print(f"Velocidade atual: {vel_original} km/s")
+    print(f"Acelerando satélite...")
     time.sleep(0.5)
     
-    print(f"  Delta-v aplicado: {delta_v_subida} km/s")
-    print(f"  Iniciando ascensão para órbita de transferência\n")
+    print(f"Delta-v aplicado: {delta_v_subida} km/s")
+    print(f"Iniciando ascensão para órbita de transferência\n")
     time.sleep(1.5)
     
     print(f"FASE 2: ÓRBITA DE TRANSFERÊNCIA")
-    print(f"  Altitude alcançada: {altitude_transferencia} km")
-    print(f"  Velocidade na transferência: {vel_transferencia} km/s")
-    print(f"  Período: {periodo_transferencia} min")
-    print(f"  Aguardando para circularizar órbita...\n")
+    print(f"Altitude alcançada: {altitude_transferencia} km")
+    print(f"Velocidade na transferência: {vel_transferencia} km/s")
+    print(f"Período: {periodo_transferencia} min")
+    print(f"Aguardando para circularizar órbita...\n")
     time.sleep(1.5)
     
     print(f"FASE 3: CIRCULARIZAÇÃO")
-    print(f"  Aplicando correção de velocidade")
-    print(f"  Órbita {altitude_transferencia} km agora está estável e segura")
-    print(f"  Esperando afastamento do tráfego...\n")
+    print(f"Aplicando correção de velocidade")
+    print(f"Órbita {altitude_transferencia} km agora está estável e segura")
+    print(f"Esperando afastamento do tráfego...\n")
     time.sleep(2.0)
     
     print(f"FASE 4: RETORNO À ÓRBITA NOMINAL")
-    print(f"  Delta-v de retorno: {delta_v_retorno} km/s")
-    print(f"  Descendendo de {altitude_transferencia} para {altitude_original} km...")
+    print(f"Delta-v de retorno: {delta_v_retorno} km/s")
+    print(f"Descendendo de {altitude_transferencia} para {altitude_original} km...")
     time.sleep(1.0)
     
     print(f"  Finalizando manobra de retorno...")
     time.sleep(1.0)
     
-    print(f"\n  SUCESSO: {id_satelite} retornou à órbita nominal")
-    print(f"  Altitude: {altitude_original} km")
-    print(f"  Velocidade: {vel_original} km/s")
-    print(f"  Período: {periodo_original} min")
-    print(f"  Combustível total gasto: {delta_v_subida + delta_v_retorno:.3f} km/s\n")
+    print(f"\nSUCESSO: {id_satelite} retornou à órbita nominal")
+    print(f"Altitude: {altitude_original} km")
+    print(f"Velocidade: {vel_original} km/s")
+    print(f"Período: {periodo_original} min")
+    print(f"Combustível total gasto: {delta_v_subida + delta_v_retorno:.3f} km/s\n")
     time.sleep(1.0)
     
     return True
 
 
 def executar_monitoramento_satelite(satelite_atual):
-    """Monitora um satélite e executa ações de colisão se necessário"""
     
     print("\n" + "=" * 60)
     print(f"\t\tMONITORAMENTO: {satelite_atual['identificador']}")
@@ -212,8 +175,8 @@ def executar_monitoramento_satelite(satelite_atual):
         altitude_concorrente = dados_concorrente["altitude_concorrente"]
 
         print(f"TRÁFEGO DETECTADO: {id_concorrente}")
-        print(f"  Distância: {distancia} km")
-        print(f"  Altitude: {altitude_concorrente} km")
+        print(f"Distância: {distancia} km")
+        print(f"Altitude: {altitude_concorrente} km")
         print()
         time.sleep(1.0)
 
@@ -241,7 +204,6 @@ def executar_monitoramento_satelite(satelite_atual):
 
 
 def executar_sistema_geral_anticolisao(lista_de_satelites):
-    """Executa varredura geral de todos os satélites"""
     
     print("\n" + "=" * 60)
     print("\tSISTEMA DE GERENCIAMENTO DE TRÁFEGO ESPACIAL")
