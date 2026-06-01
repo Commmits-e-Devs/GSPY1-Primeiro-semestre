@@ -9,7 +9,6 @@ lista_de_satelites_proprios = [
     {"identificador": "MEU-SAT-3", "altitude_atual": 1200, "status": "Operacional"},
 ]
 
-
 def obter_leitura_sensores_solares():
     if random.randint(1, 10) <= 3:
         return round(random.uniform(86.0, 120.0), 2)

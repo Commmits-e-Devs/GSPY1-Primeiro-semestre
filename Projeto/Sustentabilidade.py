@@ -1,16 +1,13 @@
-import random
 import time
 
 LIMITE_MINIMO_COMBUSTIVEL_PORCENTO = 5.0
 LIMITE_ALTITUDE_LEO_KM = 2000.0
 
-# Adicionado o nível de combustível inicial e o status de ciclo de vida
 lista_de_satelites_proprios = [
     {"identificador": "FLY-SUSTAIN-1", "altitude_atual": 550, "combustivel": 65.0, "ciclo_vida": "Ativo"},
     {"identificador": "FLY-SUSTAIN-2", "altitude_atual": 720, "combustivel": 3.2, "ciclo_vida": "Ativo"},
     {"identificador": "FLY-SUSTAIN-3", "altitude_atual": 2200, "combustivel": 4.1, "ciclo_vida": "Ativo"},
 ]
-
 
 def avaliar_sustentabilidade_satelite(satelite):
     print(f"\nANÁLISE DE CICLO DE VIDA: {satelite['identificador']}")
@@ -39,7 +36,6 @@ def avaliar_sustentabilidade_satelite(satelite):
 
     print("-" * 60)
     time.sleep(0.5)
-
 
 def executar_auditoria_ambiental_espacial(lista_de_satelites):
     print("\n" + "=" * 60)

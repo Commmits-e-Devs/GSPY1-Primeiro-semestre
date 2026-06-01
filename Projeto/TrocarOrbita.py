@@ -104,7 +104,6 @@ def realizar_manobra_com_desvio_incrementado(
         id_satelite, altitude_original, velocidade_original, periodo_original
     )
 
-
 def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original, periodo_original):
     
     altitude_transferencia = altitude_original + 70
@@ -157,7 +156,6 @@ def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original,
     
     return True
 
-
 def executar_monitoramento_satelite(satelite_atual):
     
     print("\n" + "=" * 60)
@@ -201,7 +199,6 @@ def executar_monitoramento_satelite(satelite_atual):
 
     print("-" * 60)
     time.sleep(0.5)
-
 
 def executar_sistema_geral_anticolisao(lista_de_satelites):
     

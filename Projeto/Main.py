@@ -20,7 +20,6 @@ def exibir_menu():
     print("  [ 0 ] - Sair do Sistema")
     print("-" * 55)
 
-
 def main():
 
     while True:
@@ -69,7 +68,6 @@ def main():
         else:
             print("\nERRO: Entrada inválida! Por favor, digite apenas números entre 0 e 6.")
             time.sleep(1.5)
-
 
 #partida para executar tudo aqui
 if __name__ == "__main__":

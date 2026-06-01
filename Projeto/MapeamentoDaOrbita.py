@@ -2,7 +2,6 @@ import urllib.request
 import ssl
 import math
 
-
 RAIO_TERRA_KM = 6371.0
 MI_TERRA = 3.986004418e14
 
