@@ -54,6 +54,7 @@ def realizar_manobra_com_desvio_incrementado(
     print(f"Velocidade: {calcular_velocidade_orbital(altitude_concorrente)} km/s")
     print()
     time.sleep(1.0)
+
     incrementos = [20, 40, 60]
     
     for numero_tentativa, incremento in enumerate(incrementos, 1):
@@ -103,6 +104,7 @@ def realizar_manobra_com_desvio_incrementado(
     return realizar_manobra_de_aceleracao(
         id_satelite, altitude_original, velocidade_original, periodo_original
     )
+
 
 def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original, periodo_original):
     
@@ -156,7 +158,9 @@ def realizar_manobra_de_aceleracao(id_satelite, altitude_original, vel_original,
     
     return True
 
+
 def executar_monitoramento_satelite(satelite_atual):
+    """Monitora um satélite e executa ações de colisão se necessário"""
     
     print("\n" + "=" * 60)
     print(f"\t\tMONITORAMENTO: {satelite_atual['identificador']}")
@@ -199,6 +203,7 @@ def executar_monitoramento_satelite(satelite_atual):
 
     print("-" * 60)
     time.sleep(0.5)
+
 
 def executar_sistema_geral_anticolisao(lista_de_satelites):
     
