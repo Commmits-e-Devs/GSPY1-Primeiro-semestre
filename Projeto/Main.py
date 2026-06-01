@@ -4,8 +4,8 @@ import time
 import MapeamentoDaOrbita
 import Lancamento
 import TrocarOrbita
-import MonitoramentoDoClima
-import DesorbitagemSustentavel
+import ClimaEspacial
+import Sustentabilidade
 
 def exibir_menu():
     print("\n" + "=" * 55)
@@ -50,12 +50,12 @@ def main():
         elif opcao == '4':
             print("\n>> Iniciando Módulo de Clima Espacial...")
             time.sleep(1)
-            MonitoramentoDoClima.gerenciar_clima_espacial_frota(MonitoramentoDoClima.lista_de_satelites_proprios)
+            ClimaEspacial.gerenciar_clima_espacial_frota(ClimaEspacial.lista_de_satelites_proprios)
 
         elif opcao == '5':
             print("\n>> Iniciando Módulo de Sustentabilidade...")
             time.sleep(1)
-            DesorbitagemSustentavel.executar_auditoria_ambiental_espacial(DesorbitagemSustentavel.lista_de_satelites_proprios)
+            Sustentabilidade.executar_auditoria_ambiental_espacial(Sustentabilidade.lista_de_satelites_proprios)
 
         elif opcao == '6':
             print("\n>> Iniciando Mapeamento da Órbita...")
