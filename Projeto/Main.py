@@ -31,7 +31,7 @@ def main():
             print("A Flyspace é uma startup de Space Tech focada na gestão autônoma")
             print("do tráfego orbital. Nosso sistema processa dados TLE em tempo real,")
             print("lança satélites com segurança, previne colisões espaciais através")
-            print("de manobras de desvio, mitiga, lixo espacial com desorbitagem")
+            print("de manobras de desvio, mitiga lixo espacial com desorbitagem")
             print("e protege frotas contra radiação.")
             print("=" * 65 + "\n")
             time.sleep(2.5)
